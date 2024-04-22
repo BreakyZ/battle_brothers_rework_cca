@@ -33,4 +33,9 @@
 			}
 		}
 	}
+
+	q.onUpdate = @(__original) function ( _properties )
+	{
+		_properties.isCloseCombatArcher = true;
+	}
 });

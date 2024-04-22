@@ -17,5 +17,5 @@
 	::ModReworkCca.Mod <- ::MSU.Class.Mod(::ModReworkCca.ID, ::ModReworkCca.Version, ::ModReworkCca.Name);
 
 	// load hook files
-	::include("rework_cca_hooks/load.nut");
+	::include("mod_rework_cca/load.nut");
 }, ::Hooks.QueueBucket.Normal);
