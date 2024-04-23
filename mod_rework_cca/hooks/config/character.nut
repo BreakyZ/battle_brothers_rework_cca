@@ -1,1 +1,1 @@
-::Const.CharacterProperties.CloseCombatArcher <- false;
+::Const.CharacterProperties.isCloseCombatArcher <- false;
