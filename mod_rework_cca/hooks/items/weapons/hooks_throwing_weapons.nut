@@ -5,7 +5,7 @@ foreach (throwing_weapon in [
 	"greenskins/goblin_spiked_balls"
 ])
 {
-	::ModReworkRangedCombat.HooksMod.hook("scripts/items/weapons/" + throwing_weapon, function( q )
+	::ModReworkCca.HooksMod.hook("scripts/items/weapons/" + throwing_weapon, function( q )
 	{
 		q.getAdditionalRange = @( __original ) function( _actor )
 		{

@@ -7,7 +7,7 @@
 			return;
 		}
 
-		local bonus = this.getContainer().getActor().getCurrentProperties().getRangedDefense() / 100;
+		local bonus = this.getContainer().getActor().getCurrentProperties().getMeleeSkill() / 100;
 		local range = this.getContainer().getActor().getTile().getDistanceTo(_targetEntity.getTile());
 		local negbonus = 0
 
@@ -15,13 +15,13 @@
 		{	
 			if (range == 2)
 			{
-				_properties.DamageRegularMult *= 1.0 + bonus;
-				_properties.DamageArmorMult *= 1.0 + bonus;
+				_properties.DamageRegularMult *= (1.0 + bonus / 2.0);
+				_properties.DamageArmorMult *= (1.0 + bonus / 2.0);
 			}
 			else if (range == 3)
 			{
-				_properties.DamageRegularMult *= (1.0 + bonus / 3.0);
-				_properties.DamageArmorMult *= 1.0 + bonus / 3.0;
+				_properties.DamageRegularMult *= (1.0 + bonus / 5.0);
+				_properties.DamageArmorMult *= 1.0 + bonus / 5.0;
 			}
 			else if (range > 4)
 			{
@@ -43,20 +43,20 @@
 	{
 		local tooltip = this.skill.getTooltip();
 		local actor = this.getContainer().getActor()
-		local bonus = this.getContainer().getActor().getCurrentProperties().getRangedDefense()
+		local bonus = this.getContainer().getActor().getCurrentProperties().getMeleeSkill()
 		local isThrowing = false
 		
 		tooltip.push({
 			id = 6,
 			type = "text",
 			icon = "ui/icons/special.png",
-			text = "Increases your damage done at a range of 2 by [color=" + this.Const.UI.Color.PositiveValue + "]" + bonus + "%[/color]."
+			text = "Increases your damage done at a range of 2 by [color=" + this.Const.UI.Color.PositiveValue + "]" + this.Math.floor(bonus / 2.0) + "%[/color]."
 		});
 		tooltip.push({
 			id = 6,
 			type = "text",
 			icon = "ui/icons/special.png",
-			text = "Increases your damage done at a range of 3 by [color=" + this.Const.UI.Color.PositiveValue + "]" + this.Math.floor(bonus / 3.0) + "%[/color]."
+			text = "Increases your damage done at a range of 3 by [color=" + this.Const.UI.Color.PositiveValue + "]" + this.Math.floor(bonus / 5.0) + "%[/color]."
 		});
 
 		if (actor.getItems().getItemAtSlot(this.Const.ItemSlot.Mainhand) != null)
